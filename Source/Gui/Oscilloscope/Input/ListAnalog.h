@@ -33,7 +33,7 @@ public:
 			(NATIVEENUM*)&pInfo->Enabled, CSettings::AnalogChannel::_EnabledMax );
 		m_proCoupling.Create( (const char**)CSettings::AnalogChannel::ppszTextCoupling,
 			(NATIVEENUM*)&pInfo->Coupling, CSettings::AnalogChannel::_CouplingMax );
-		m_proResolution.Create( (const char**)CSettings::AnalogChannel::ppszTextResolution,
+		m_proResolution.Create( (const char**)CSettings::AnalogChannel::ppszTextResolution[(NATIVEENUM)pInfo->Probe],
 			(NATIVEENUM*)&pInfo->Resolution, CSettings::AnalogChannel::_ResolutionMax );
 		m_proProbe.Create( (const char**)CSettings::AnalogChannel::ppszTextProbe,
 			(NATIVEENUM*)&pInfo->Probe, CSettings::AnalogChannel::_ProbeMax );

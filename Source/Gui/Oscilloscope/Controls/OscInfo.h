@@ -15,12 +15,12 @@ public:
 		int _x = x;
 		x += BIOS::LCD::Print( x, y, Settings.CH1.u16Color, RGB565(000000), "CH1: " );
 		x += BIOS::LCD::Print( x, y, RGB565(ffffff), RGB565(000000), 
-			CSettings::AnalogChannel::ppszTextResolution[ Settings.CH1.Resolution ]);
+			CSettings::AnalogChannel::ppszTextResolution[Settings.CH1.Probe][ Settings.CH1.Resolution ]);
 		
 		x = _x + 100;
 		x += BIOS::LCD::Print( x, y, Settings.CH2.u16Color, RGB565(000000), "CH2: " );
 		x += BIOS::LCD::Print( x, y, RGB565(ffffff), RGB565(000000), 
-			CSettings::AnalogChannel::ppszTextResolution[ Settings.CH2.Resolution ]);
+			CSettings::AnalogChannel::ppszTextResolution[Settings.CH2.Probe][ Settings.CH2.Resolution ]);
 
 		x = _x + 200;
 		x += BIOS::LCD::Print( x, y, RGB565(b0b0b0), RGB565(000000), "T: " );

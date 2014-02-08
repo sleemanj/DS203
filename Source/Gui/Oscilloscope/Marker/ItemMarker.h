@@ -67,16 +67,24 @@ public:
 					BIOS::LCD::Print( x, y, clr2, RGBTRANS, "ms");
 				}
 			}
-			if ( m_pMarker->Type == CSettings::Marker::_Voltage )
+			if (m_pMarker->Type == CSettings::Marker::_Voltage)
 			{
 				CSettings::Calibrator::FastCalc fastCalc;
+				float fValue;
 				if (m_pMarker->Source == CSettings::Marker::_CH1)
-					Settings.CH1Calib.Prepare( &Settings.CH1, fastCalc );
+				{
+					Settings.CH1Calib.Prepare(&Settings.CH1, fastCalc);
+					fValue = Settings.CH1Calib.Voltage(fastCalc, (float)m_pMarker->nValue);
+					fValue *= Settings.CH1.pfValueProbe[Settings.CH1.Probe];
+				}
 				else
-					Settings.CH2Calib.Prepare( &Settings.CH2, fastCalc );
+				{
+					Settings.CH2Calib.Prepare(&Settings.CH2, fastCalc);
+					fValue = Settings.CH2Calib.Voltage(fastCalc, (float)m_pMarker->nValue);
+					fValue *= Settings.CH2.pfValueProbe[Settings.CH2.Probe];
+				}
 
-				float fValue = Settings.CH1Calib.Voltage( fastCalc, (float)m_pMarker->nValue );
-				x += BIOS::LCD::Printf( x, y, clr, RGBTRANS, "%f", fValue ) * 8;
+				x += BIOS::LCD::Printf(x, y, clr, RGBTRANS, "%f", fValue) * 8;
 				if (!HasFocus())
 				{
 					x += 2;

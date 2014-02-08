@@ -81,14 +81,21 @@ public:
 				} else
 				{
 					CSettings::Calibrator::FastCalc fastCalc;
+					float fValue1, fValue2, fResult;
 					if (m_pMarker1->Source == CSettings::Marker::_CH1)
-						Settings.CH1Calib.Prepare( &Settings.CH1, fastCalc );
+					{
+						Settings.CH1Calib.Prepare(&Settings.CH1, fastCalc);
+						fValue1 = Settings.CH1Calib.Voltage(fastCalc, (float)m_pMarker1->nValue);
+						fValue2 = Settings.CH1Calib.Voltage(fastCalc, (float)m_pMarker2->nValue);
+						fResult = (fValue2 - fValue1) * Settings.CH1.pfValueProbe[Settings.CH1.Probe];
+					}
 					else
-						Settings.CH2Calib.Prepare( &Settings.CH2, fastCalc );
-
-					float fValue1 = Settings.CH1Calib.Voltage( fastCalc, (float)m_pMarker1->nValue );
-					float fValue2 = Settings.CH1Calib.Voltage( fastCalc, (float)m_pMarker2->nValue );
-					float fResult = fValue2 - fValue1;
+					{
+						Settings.CH2Calib.Prepare(&Settings.CH2, fastCalc);
+						fValue1 = Settings.CH2Calib.Voltage(fastCalc, (float)m_pMarker1->nValue);
+						fValue2 = Settings.CH2Calib.Voltage(fastCalc, (float)m_pMarker2->nValue);
+						fResult = (fValue2 - fValue1) * Settings.CH2.pfValueProbe[Settings.CH2.Probe];
+					}
 					x += BIOS::LCD::Printf( x, y, clr, RGBTRANS, "%f", fResult ) * 8;
 					x += 2;
 					BIOS::LCD::Print( x, y, RGB565(404040), RGBTRANS, "V");

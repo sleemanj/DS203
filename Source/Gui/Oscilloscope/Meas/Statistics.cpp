@@ -12,11 +12,13 @@ float CMeasStatistics::_GetSamplef( BIOS::ADC::TSample& nSample )
 	{
 		nSample = (ui8)((nSample) & 0xff);
 		fSample = Settings.CH1Calib.Voltage( fastCalc1, (float)nSample );
+		fSample = fSample * Settings.CH1.pfValueProbe[Settings.CH1.Probe];
 	}
 	else if ( m_curSrc == CSettings::Measure::_CH2 )
 	{
 		nSample = (ui8)((nSample>>8) & 0xff);
 		fSample = Settings.CH2Calib.Voltage( fastCalc2, (float)nSample );
+		fSample = fSample * Settings.CH2.pfValueProbe[Settings.CH2.Probe];
 	}
 	else if ( m_curSrc == CSettings::Measure::_Math )
 	{

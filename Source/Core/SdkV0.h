@@ -141,7 +141,7 @@
 		if ( nValue < 0 || nValue > CSettings::AnalogChannel::_ResolutionMax )
 			return CEvalOperand( CEvalOperand::eoError );
 
-		PCSTR strEnum = CSettings::AnalogChannel::ppszTextResolution[ nValue ];
+		PCSTR strEnum = CSettings::AnalogChannel::ppszTextResolution[0][ nValue ];
 		return CEvalOperand( strEnum, strlen(strEnum) );
 	}
 

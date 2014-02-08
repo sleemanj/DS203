@@ -9,14 +9,16 @@ CSettings* CSettings::m_pInstance = NULL;
 		{"No", "Yes"};
 /*static*/ const char* const CSettings::AnalogChannel::ppszTextCoupling[] = 
 		{"AC", "DC", "GND"};
-/*static*/ const char* const CSettings::AnalogChannel::ppszTextResolution[] =
-		{"50mV", "100mV", "200mV", "500mV", "1V", "2V", "5V", "10V"};
+/*static*/ const char* const CSettings::AnalogChannel::ppszTextResolution[_NumProbeFactors][_NumResolutions] =
+		{ {"50mV", "100mV", "200mV", "500mV", "1V", "2V", "5V", "10V"}, // 1x
+		  {"500mV", "1V", "2V", "5V", "10V", "20V", "50V", "100V"} };  // 10x
+
 /*static*/ const float CSettings::AnalogChannel::pfValueResolution[] =
 		{0.050f, 0.100f, 0.200f, 0.500f, 1.0f, 2.0f, 5.0f, 10.0f};
 /*static*/ const char* const CSettings::AnalogChannel::ppszTextProbe[] =
-		{"1 x", "10 x", "100 x", "1000 x"};
+		{"1 x", "10 x"};
 /*static*/ const float CSettings::AnalogChannel::pfValueProbe[] =
-		{1.0f, 10.0f, 100.0f, 1000.0f};
+		{1.0f, 10.0f};
 /*static*/ const char* const CSettings::DigitalChannel::ppszTextPolarity[] =
 		{"Positive", "Negative"};
 /*static*/ const char* const CSettings::TimeBase::ppszTextResolution[] =

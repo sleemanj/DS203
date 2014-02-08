@@ -40,14 +40,14 @@ public:
 		if ( !HasFocus() )
 		{
 			x += BIOS::LCD::Print( x, y, clr, RGBTRANS, 
-				CSettings::AnalogChannel::ppszTextResolution[ m_pInfo->Resolution ] );
+				CSettings::AnalogChannel::ppszTextResolution[m_pInfo->Probe][ m_pInfo->Resolution ] );
 			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::per_div);
 		} else
 		{
 			x -= 8;
 			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::sel_left);
 			x += BIOS::LCD::Print(x, y, RGB565(ffffff), clr, 
-				CSettings::AnalogChannel::ppszTextResolution[ m_pInfo->Resolution ] );
+				CSettings::AnalogChannel::ppszTextResolution[m_pInfo->Probe][ m_pInfo->Resolution ] );
 			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::sel_right);
 			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::per_div);
 		}

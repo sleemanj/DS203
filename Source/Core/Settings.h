@@ -19,18 +19,18 @@ public:
 	public:
 		static const char* const ppszTextEnabled[];
 		static const char* const ppszTextCoupling[];
-		static const char* const ppszTextResolution[];
 		static const char* const ppszTextProbe[];
 
 		enum eEnabled {_NO = 0, _YES = 1, _EnabledMax = _YES}
 			Enabled;
 		enum eCoupling {_AC = 0, _DC, _GND, _CouplingMax = _GND} 
 			Coupling;
-		enum eResolution {_50mV, _100mV, _200mV, _500mV, _1V, _2V, _5V, _10V, _ResolutionMax = _10V} 
+		enum eResolution {_50mV, _100mV, _200mV, _500mV, _1V, _2V, _5V, _10V, _ResolutionMax = _10V, _NumResolutions} 
 			Resolution;
-		enum eProbe { _1X = 0, _10X, _100X, _1000X, _ProbeMax = _1000X }
+		enum eProbe { _1X = 0, _10X,_ProbeMax = _10X,_NumProbeFactors }
 			Probe;
 
+		static const char* const ppszTextResolution[_NumProbeFactors][_NumResolutions];
 		static const float pfValueProbe[];
 		static const float pfValueResolution[];
 		
