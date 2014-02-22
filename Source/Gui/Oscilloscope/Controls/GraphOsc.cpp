@@ -485,8 +485,18 @@ void CWndOscGraph::OnPaintTY()
 			{
 				if ( nPrev2 == -1 )
 					nPrev2 = nSampleY2;
-				int nBottom = min(nSampleY2, nPrev2);
-				int nTop = max(nSampleY2, nPrev2);
+				int nBottom, nTop;
+				if (nSampleY2 < nPrev2) {
+					nBottom = nSampleY2;
+					nTop = nPrev2-1;
+				}
+				else if (nSampleY2 > nPrev2) {
+					nBottom = nPrev2 + 1;
+					nTop = nSampleY2;
+				}
+				else {
+					nBottom = nTop = nSampleY2;
+				}
 				for ( int _y = nBottom; _y <= nTop; _y++)
 					column[_y] = clr2;
 				nPrev2 = nSampleY2;
@@ -501,9 +511,17 @@ void CWndOscGraph::OnPaintTY()
 			{
 				if ( nPrev1 == -1 )
 					nPrev1 = nSampleY1;
-				int nBottom = min(nSampleY1, nPrev1);
-				int nTop = max(nSampleY1, nPrev1);
-				for ( int _y = nBottom; _y <= nTop; _y++)
+				int nBottom, nTop;
+				if (nSampleY1 < nPrev1) {
+					nBottom = nSampleY1;
+					nTop = nPrev1-1;
+				} else if( nSampleY1 > nPrev1 ) {
+					nBottom = nPrev1+1;
+					nTop = nSampleY1;
+				} else {
+					nBottom = nTop = nSampleY1;
+				}
+				for (int _y = nBottom; _y <= nTop; _y++)
 					column[_y] = clr1;
 				nPrev1 = nSampleY1;
 			}
