@@ -31,10 +31,12 @@ public:
 			x -= 8;
 			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::sel_left);
 			x += BIOS::LCD::Print( x, y, RGBTRANS, clr, CSettings::TimeBase::ppszTextResolution[m_pInfo->Resolution]);
+			x += BIOS::LCD::Draw(x, y, RGBTRANS, clr, CShapes::per_div);
 			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::sel_right);
 		} else
 		{
 			x += BIOS::LCD::Print( x, y, clr, RGBTRANS, CSettings::TimeBase::ppszTextResolution[m_pInfo->Resolution]);
+			x += BIOS::LCD::Draw(x, y, clr, RGBTRANS, CShapes::per_div);
 		}
 	}
 

@@ -15,7 +15,7 @@ CWndMenuInput::CWndMenuInput()
 	m_itmCH3.Create(&Settings.CH3, this);
 	m_itmCH4.Create(&Settings.CH4, this);
 	m_itmTime.Create(&Settings.Time, this);
-	m_itmWindow.Create(this);
+	m_itmWindow.Create(&Settings.Time, this);
 	m_itmTrig.Create(this);
 }
 
@@ -200,6 +200,7 @@ LINKERSECTION(".extra")
 	if ( code == ToWord('i', 'u') )
 	{
 		CCoreOscilloscope::ConfigureAdc();
+		MainWnd.m_wndMenuInput.m_itmWindow.Invalidate();
 	}
 	if ( code == ToWord('r', 'u') )
 	{

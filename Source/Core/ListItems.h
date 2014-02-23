@@ -112,6 +112,11 @@ public:
 	{
 		m_nMax = nMax;
 	}
+
+	virtual ui32 Get()
+	{
+		return *m_pVal;
+	}
 };
 
 template <class T>
